@@ -22,6 +22,12 @@ pip install -r requirements.txt
 python main.py
 ```
 
+# Как запустить веб версию
+
+```python3
+python server.py
+```
+
 # Цели проекта
 
 Код написан в учебных целях. Это урок из курса по веб-разработке — [Девман](https://dvmn.org).
