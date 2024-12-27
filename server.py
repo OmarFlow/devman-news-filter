@@ -7,11 +7,9 @@ from anyio import create_task_group
 
 from main import process_article
 
-routes = web.RouteTableDef()
 dictionary = list(i.rstrip("\n") for i in open("negative_words.txt", "r"))
 morph = pymorphy2.MorphAnalyzer()
 
-@routes.get('/')
 async def analyze_article(request: Request) -> Response:
     urls = request.query.get('urls', [])
     split_urls = [url for url in urls.split(',')]
@@ -29,5 +27,5 @@ async def analyze_article(request: Request) -> Response:
 
 if __name__ == '__main__':
     app = web.Application()
-    app.add_routes(routes)
+    app.add_routes([web.get('/', analyze_article)])
     web.run_app(app)
